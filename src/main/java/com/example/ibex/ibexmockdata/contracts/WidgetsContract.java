@@ -6,7 +6,6 @@ import java.util.Map;
 import javax.validation.Valid;
 
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,7 +19,6 @@ import com.example.ibex.ibexmockdata.model.Widgets;
 
 
 @RequestMapping("/api/ibex")
-//@CrossOrigin(origins = "http://localhost:9090", maxAge = 3600)
 public interface WidgetsContract {
 	
 	@GetMapping("/widgets")

@@ -6,17 +6,23 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name="dashboards")
 public class Dashboards {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(columnDefinition = "serial")
 	private Long id;
 	
 	@Column(name="name",nullable = false)
+	@NotNull(message = "Add name Attribute to Data")
 	private String name;
+	
+	@Column(name="description")
+	private String description;
 
 	public Dashboards() {
 		
@@ -38,8 +44,16 @@ public class Dashboards {
 		this.name = name;
 	}
 
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
 	@Override
 	public String toString() {
-		return "Dashboards [id=" + id + ", name=" + name + "]";
+		return "Dashboards [id=" + id + ", name=" + name + ", description=" + description + "]";
 	}
 }

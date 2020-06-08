@@ -2,13 +2,12 @@ package com.example.ibex.ibexmockdata.model;
 
 import java.util.List;
 
-import javax.persistence.Embeddable;
-
-@Embeddable
 public class BasicSettings {
 	
 	private String name;
+	
 	private List<Integer> data;
+		
 	private String type;
 		
 	public BasicSettings() {

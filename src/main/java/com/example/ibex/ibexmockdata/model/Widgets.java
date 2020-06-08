@@ -6,27 +6,27 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.persistence.Transient;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "widgets")
 public class Widgets {
-	
-	@Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
-	
-	@Column(name="name",nullable = false)
-	private String name;
-	
-	@Column(name="basicsettings")
-	private String basicSettings;
-	
-	@Transient
-	private BasicSettings basicSettingsPojo;
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(columnDefinition = "serial")
+	private Long id;
+
+	@Column(name = "name", nullable = false)
+	@NotNull(message = "Add name Attribute to Data")
+	private String name;
+
+	@Column(name = "basicsettings")
+	private String basicsettings;
+	
+	
 	public Widgets() {
-		
+
 	}
 
 	public Long getId() {
@@ -45,26 +45,16 @@ public class Widgets {
 		this.name = name;
 	}
 
-	public String getBasicSettings() {
-		return basicSettings;
+	public String getBasicsettings() {
+		return basicsettings;
 	}
 
-	public void setBasicSettings(String basicSettings) {
-		this.basicSettings = basicSettings;
-	}	
-
-	public BasicSettings getBasicSettingsPojo() {
-		return basicSettingsPojo;
+	public void setBasicsettings(String basicsettings) {
+		this.basicsettings = basicsettings;
 	}
 
-	public void setBasicSettingsPojo(BasicSettings basicSettingsPojo) {
-		this.basicSettingsPojo = basicSettingsPojo;
-	}
-	
 	@Override
 	public String toString() {
-		return "Widgets [id=" + id + ", name=" + name + ", basicSettings=" + basicSettings + ", basicSettingsPojo="
-				+ basicSettingsPojo + "]";
-	}
-	
+		return "Widgets [id=" + id + ", name=" + name + ", basicsettings=" + basicsettings + "]";
+	}	
 }

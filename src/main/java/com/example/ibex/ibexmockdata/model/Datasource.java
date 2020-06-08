@@ -13,15 +13,19 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Table(name = "datasource")
 public class Datasource {
 	@Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(columnDefinition = "serial")
 	private int id;
 
 	@Column(name="name",nullable = false)
 	private String name;
 	
 	@Column(name="url",nullable = false)
-	@JsonIgnore
 	private String url;
+	
+	@Column(name = "properties")
+	private String properties;
+
 	
 	@Column(name="metadata",nullable = false)
 	@JsonIgnore
@@ -55,6 +59,14 @@ public class Datasource {
 		this.url = url;
 	}
 
+	public String getProperties() {
+		return properties;
+	}
+
+	public void setProperties(String properties) {
+		this.properties = properties;
+	}
+	
 	public String getMetadata() {
 		return metadata;
 	}
@@ -65,7 +77,7 @@ public class Datasource {
 
 	@Override
 	public String toString() {
-		return "Datasource [id=" + id + ", name=" + name + ", url=" + url + ", metadata=" + metadata + "]";
-	}	
-	
+		return "Datasource [id=" + id + ", name=" + name + ", url=" + url + ", properties=" + properties + ", metadata="
+				+ metadata + "]";
+	}
 }

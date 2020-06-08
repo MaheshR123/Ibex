@@ -29,6 +29,7 @@ public class DashboardsController implements DashboardsContract {
 	@Override
 	public Dashboards createDashboard(@Valid Dashboards dashboards) {
 		Dashboards dashboard = dashboardRepo.save(dashboards);
+		
 		return dashboard;
 	}
 
@@ -49,6 +50,7 @@ public class DashboardsController implements DashboardsContract {
 				.orElseThrow(() -> new ResourceNotFoundException("Widgets not found for this id :: " +dashboardId));
 		dashboards.setId(dashboardsDetails.getId());
 		dashboards.setName(dashboardsDetails.getName());
+		dashboards.setDescription(dashboardsDetails.getDescription());
 	
 		
 		final Dashboards dashboardsUpdate = dashboardRepo.save(dashboards);

@@ -28,9 +28,7 @@ public class WidgetsController implements WidgetsContract {
 
 	@Override
 	public Widgets createWidgets(@Valid Widgets widgets) {
-		
-		widgets.setBasicSettings(widgets.getBasicSettingsPojo().toString());
-		System.out.println(widgets.toString());
+		widgets.setBasicsettings(widgets.getBasicsettings().toString());
 		Widgets widgetsdata = widgetsRepository.save(widgets);
 
 		return widgetsdata;
@@ -52,7 +50,7 @@ public class WidgetsController implements WidgetsContract {
 				.orElseThrow(() -> new ResourceNotFoundException("Widgets not found for this id :: " +widgetId));
 		widget.setId(widgetsDetails.getId());
 		widget.setName(widgetsDetails.getName());
-		widget.setBasicSettings(widgetsDetails.getBasicSettingsPojo().toString());
+		widget.setBasicsettings(widgetsDetails.getBasicsettings().toString());
 		
 		final Widgets widgetsUpdate = widgetsRepository.save(widget);
 		
